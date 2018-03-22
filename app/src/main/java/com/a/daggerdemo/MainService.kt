@@ -8,7 +8,8 @@ import retrofit2.http.Query
 /**
  * Created by vihaan on 3/16/18.
  */
-interface BlogExamsService{
+interface MainService{
+
 //    @GET("/blog/mobile_blog_api.php?type=1&")
     @GET("/blog/mobile_blog_api.php")
     fun getExams(@Query("type") type: String): Single<ResponseBody>

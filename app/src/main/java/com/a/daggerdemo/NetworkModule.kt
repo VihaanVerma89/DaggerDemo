@@ -1,8 +1,8 @@
 package com.testbook.tbapp.android.di
 
 
-import com.a.daggerdemo.BlogExamsService
 import com.a.daggerdemo.BuildConfig
+import com.a.daggerdemo.MainService
 import dagger.Module
 import dagger.Provides
 import okhttp3.OkHttpClient
@@ -45,9 +45,9 @@ class NetworkModule {
 
     @Singleton
     @Provides
-    internal fun provideBlogExamsService(retrofit: Retrofit): BlogExamsService
+    internal fun provideBlogExamsService(retrofit: Retrofit): MainService
     {
-        val blogExamsService = retrofit.create(BlogExamsService::class.java)
+        val blogExamsService = retrofit.create(MainService::class.java)
         return blogExamsService
     }
 

@@ -1,9 +1,10 @@
 package com.a.daggerdemo
 
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
+import dagger.android.support.DaggerAppCompatActivity
+import javax.inject.Inject
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : DaggerAppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -11,10 +12,19 @@ class MainActivity : AppCompatActivity() {
         initFragment()
     }
 
+    @Inject
+    lateinit var mainPresenter: MainContract.Presenter
+
+    @Inject
+    lateinit var mainFragmentProvider: dagger.Lazy<MainFragment>
+
+//    @Inject
+//    internal var blogExamsFragmentProvider: dagger.Lazy<BlogExamsFragment>? = null
+
     private fun initFragment(){
         val fragment = supportFragmentManager.findFragmentById(R.id.frameLayout)
-                as MainFragment? ?: MainFragment.newInstance().also {
-            showFragment( R.id.frameLayout, it)
+                as MainFragment? ?: mainFragmentProvider.get().apply {
+            showFragment(R.id.frameLayout, this)
         }
     }
 }

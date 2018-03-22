@@ -1,8 +1,8 @@
 package com.testbook.tbapp.android.di
 
 import com.a.daggerdemo.ActivityScoped
-import com.a.daggerdemo.BlogExamsModule
 import com.a.daggerdemo.MainActivity
+import com.a.daggerdemo.MainModule
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 
@@ -13,7 +13,7 @@ import dagger.android.ContributesAndroidInjector
 abstract class ActivityBindingModule {
 
     @ActivityScoped
-    @ContributesAndroidInjector(modules = arrayOf(BlogExamsModule::class))
+    @ContributesAndroidInjector(modules = arrayOf(MainModule::class))
     abstract fun mainActivity(): MainActivity
 
 }
